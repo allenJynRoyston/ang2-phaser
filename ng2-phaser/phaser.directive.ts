@@ -9,7 +9,7 @@ declare var Phaser:any;
   directives: [CORE_DIRECTIVES],
   template: ""
 })
-export class PhaserComponent {
+export class ng2PhaserComponent {
 
   //--------------
   public selfRef:any;

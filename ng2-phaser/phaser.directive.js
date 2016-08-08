@@ -12,16 +12,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 //------------------------------------
-var PhaserComponent = (function () {
+var ng2PhaserComponent = (function () {
     //--------------
-    function PhaserComponent(el) {
+    function ng2PhaserComponent(el) {
         this.el = el;
         this.phaser = new core_1.EventEmitter();
         this.selfRef = el.nativeElement;
     }
     //--------------
     //--------------
-    PhaserComponent.prototype.ngOnInit = function () {
+    ng2PhaserComponent.prototype.ngOnInit = function () {
         var t = this;
         var alreadyLoaded = false;
         var allScripts = document.getElementsByTagName("script");
@@ -63,32 +63,32 @@ var PhaserComponent = (function () {
     };
     //--------------
     //--------------
-    PhaserComponent.prototype.initPhaser = function () {
+    ng2PhaserComponent.prototype.initPhaser = function () {
         this.phaser.emit({ container: this.selfRef });
     };
     __decorate([
         core_1.Output(), 
         __metadata('design:type', Object)
-    ], PhaserComponent.prototype, "phaser", void 0);
+    ], ng2PhaserComponent.prototype, "phaser", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
-    ], PhaserComponent.prototype, "settings", void 0);
+    ], ng2PhaserComponent.prototype, "settings", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
-    ], PhaserComponent.prototype, "layout", void 0);
-    PhaserComponent = __decorate([
+    ], ng2PhaserComponent.prototype, "layout", void 0);
+    ng2PhaserComponent = __decorate([
         core_1.Component({
             selector: 'phaser',
             directives: [common_1.CORE_DIRECTIVES],
             template: ""
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object])
-    ], PhaserComponent);
-    return PhaserComponent;
+    ], ng2PhaserComponent);
+    return ng2PhaserComponent;
     var _a;
 }());
-exports.PhaserComponent = PhaserComponent;
+exports.ng2PhaserComponent = ng2PhaserComponent;
 //------------------------------------
 //# sourceMappingURL=phaser.directive.js.map
