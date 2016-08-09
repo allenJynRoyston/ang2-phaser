@@ -9,7 +9,7 @@ First, make sure you include phaser in your node_modules.  This will need to be 
 npm install phaser
 ```
 <br>
-First, alter your systemjs.config.js to include the right pathing.<br>
+Next, alter your systemjs.config.js to include the right pathing.<br>
 ```
   var map = {
     'app':                        'app', // 'dist',
