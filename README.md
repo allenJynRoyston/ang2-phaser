@@ -1,32 +1,78 @@
-# ang2-parallax
+# ang2-phaser
 
 ### What Am I?!
-An easy way to implement parallax scrolling for Angular2 components.  (There's also an [Angular 1.x](https://github.com/allenRoyston/ng-parallax "Angular 1.x") directive for those that need it.)
-  - No dependencies
-  - Responsive
-  - Simple
-  - Works for mobile!  (Well, iPhones at least - haven't tested on an Android yet)
-  - Tiny
+An easy way to implement the Phaser game engine for Angular2 components.
 
 ### Installation
-Include the module in your scripts.<br>
+First, make sure you include phaser in your node_modules.  This will need to be linked to the phaser directive directly (example below).
+```
+npm install phaser
+```
+<br>
+First, alter your systemjs.config.js to include the right pathing.<br>
+```
+  var map = {
+    'app':                        'app', // 'dist',
+    '@angular':                   'node_modules/@angular',
+    'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
+    'rxjs':                       'node_modules/rxjs',
+    'ang2-phaser':                'node_modules/ang2-phaser'
+  };
+  
+  var packages = {
+    'app':                        { main: 'main.js',  defaultExtension: 'js' },
+    'rxjs':                       { defaultExtension: 'js' },
+    'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
+    'ang2-phaser':                { defaultExtension: 'js' }
+  };
+
+```
+Then include the module in your scripts (including the functions and declarations).<br>
 ```
 
-import { Component } from '@angular/core';
-import { ng2Parallax  } from '<pathTo>/ng2-parallax/parallax.directive';
+import {Component} from '@angular/core';
+import {NG2_PHASER}  from '../../../node_modules/ang2-phaser/ng2phaser'
+
+declare var __phaser:any;
 
 @Component({
-  selector: 'my-component',
-  directives: [ng2Parallax],
-  template:`
-  
-  <div style='width: 200; height: 200px'>
-    <div parallax speed="5" src="path/to/image.jpg"></div>
-  </div>
-  
-  `
+    selector: 'my-app',
+    templateUrl: './app/components/my-app/main.html',
+    directives: [ NG2_PHASER ],
+   template: `
+     <center>
+       <h1>Angular2 - Phaser Demo</h1>
+       <phaser (phaser)="phaserLink1($event)" [settings]="{file:'node_modules/phaser/build/phaser.min.js'}"></phaser>
+     </center>
+   `
 })
-export class componentName { }
+export class AppComponent {
+
+
+   //---------------
+   phaserLink1(phaser:any){
+
+      var js = document.createElement("script");
+          js.type = "text/javascript";
+          js.src = '../../../node_modules/ang2-phaser/game/phaser1_demo.js';
+          document.body.appendChild(js);
+          js.onload = function(){
+             __phaser.game.init(phaser.container, this);
+          }
+   }
+   //---------------
+
+   //---------------
+   destroyGame(){
+      __phaser.destroyGame(function(){
+            // do something
+      });
+   }
+   //---------------
+
+
+}
+
 
 ```
 
@@ -35,26 +81,18 @@ export class componentName { }
 
 
 ### Live Demo 
-[Check it out](https://ng2-parallax-demo.herokuapp.com/ "ng2 Parallax Demo")
-
+Coming soon!
 
 ### Dependencies
-- None!
+- Phaser
 
 ### NPM / Bower
 ```
-npm install ang2-parallax --save-dev
+npm install ang2-phaser --save
 ```
 
 
 
-
-### Parameters
-```
-speed = 0 to xx (the higher the number, the slower the effect).  This part requires some tinkering since different image sizes will respond differently.
-
-src = path to image
-```
 
 License
 ----
