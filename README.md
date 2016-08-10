@@ -75,13 +75,19 @@ export class AppComponent {
 ```
 
 ### What's up with the declare var __phaser:any;
-So if you look at the demo game file (in game/phaser1_demo.js), you'll see that the whole thing is wrapped in the object __phaser.  Because of how everything is loaded, the __phaser object makes it so that they all eventually line up.  While we're on the subject, I'd recommend leaving the __phaser if you're just starting out but it doesn't *have* to be setup this way.  
+So if you look at the demo game file (in game/phaser1_demo.js), you'll see that the whole thing is wrapped in the object __phaser.  Because of how everything is asynchronously loaded, the __phaser object makes it so that they all eventually line up .  
+
+The best way to wrap you mind about it is to consider the pro/cons to this somewhat unorthodox approach.  Essentially each game file should be treated as an NES catridges - each one is essentially a self contained game.  The angular2 component is essentially the NES loader (minus the faulty pins that you have to blow into) and the browser is the NES itself.  In otherwords, it was built this way so that catridges can be interchanged easily and regularly.    
+
+Now you could easily pack a small game into one game file, but for large scale games, it helps to break it out into scenes or parts.  Not only does this help keep the code managable, but lets you build/test individual game parts out.  For example, you could have an "intro", "start screen", "cutscene", "gameplay" then finally an "end screen".  Each one of these could have their own assets, load screens, etc, so you could build each one out individually and then just control the order that these files are played.  That's why this method exists - to help facilitate the creation of larger scale productions and test individual parts out before stiching it all together.
+
+*While we're on the subject, I'd recommend leaving the __phaser object as-is if you're just starting out.  You can certainly add to it (it's expected that you do), but what's in there right now is the bare minimum required to get it to start/stop correctly.  While it doesn't *have* to be setup this way, I'd only recommend altering if you need to.
 
 ```
 //--------------
 __phaser = {
 
-    gameObj: null,
+    gameObj: null,  // REQUIRED
 
     //-------------------
     game:{
@@ -96,53 +102,60 @@ __phaser = {
               __phaser.gameObj = game;
 
 
-            //-----------------------  PRELOAD
+            //-----------------------  PRELOAD 
             function preload() {
+              // do stuff
             }
             //-----------------------
 
             //-----------------------  CREATE
             function create() {
-
-
+              // do stuff
             }
             //-----------------------
 
 
             //-----------------------
             function loadStart() {
+              // do stuff
             }
             //-----------------------
 
             //-----------------------
             function fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
+              // do stuff
             }
             //-----------------------
 
             //-----------------------
             function preloaderUpdate(){
+              // do stuff
             }
             //-----------------------
 
             //-----------------------
             function loadComplete() {
+              // do stuff
             }
             //-----------------------
 
 
             //-----------------------
             function startGame(){
+              // do stuff
             }
             //-----------------------
 
             //-----------------------
             function gameplayUpdate(){
+              // do stuff
             }
             //-----------------------
 
 
             //-----------------------  UPDATE
             function update() {
+              // do stuff
             }
             //-----------------------
 
@@ -156,7 +169,7 @@ __phaser = {
     //-------------------
 
 
-    //-------------------
+    //-------------------  REQUIRED
     destroyGame(callback){
           this.gameObj.destroy();
           callback();
