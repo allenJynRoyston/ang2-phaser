@@ -72,8 +72,100 @@ export class AppComponent {
 
 
 }
+```
+
+### What's up with the declare var __phaser:any;
+So if you look at the demo game file (in game/phaser1_demo.js), you'll see that the whole thing is wrapped in the object __phaser.  Because of how everything is loaded, the __phaser object makes it so that they all eventually line up.  While we're on the subject, I'd recommend leaving the __phaser if you're just starting out but it doesn't *have* to be setup this way.  
+
+```
+//--------------
+__phaser = {
+
+    gameObj: null,
+
+    //-------------------
+    game:{
+
+      //-------------------
+      init(canvasEle, appComponent){
+              // create game object
+              var game = new Phaser.Game(800, 500, Phaser.AUTO, canvasEle, { preload: preload, create: create, update: update });
+              var gameState = "preload"
+
+              // assign it
+              __phaser.gameObj = game;
 
 
+            //-----------------------  PRELOAD
+            function preload() {
+            }
+            //-----------------------
+
+            //-----------------------  CREATE
+            function create() {
+
+
+            }
+            //-----------------------
+
+
+            //-----------------------
+            function loadStart() {
+            }
+            //-----------------------
+
+            //-----------------------
+            function fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
+            }
+            //-----------------------
+
+            //-----------------------
+            function preloaderUpdate(){
+            }
+            //-----------------------
+
+            //-----------------------
+            function loadComplete() {
+            }
+            //-----------------------
+
+
+            //-----------------------
+            function startGame(){
+            }
+            //-----------------------
+
+            //-----------------------
+            function gameplayUpdate(){
+            }
+            //-----------------------
+
+
+            //-----------------------  UPDATE
+            function update() {
+            }
+            //-----------------------
+
+
+
+      },
+
+
+
+    },
+    //-------------------
+
+
+    //-------------------
+    destroyGame(callback){
+          this.gameObj.destroy();
+          callback();
+    }
+    //-------------------
+
+
+}
+//--------------
 ```
 
 ### Version
