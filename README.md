@@ -6,7 +6,8 @@ An easy way to implement the Phaser game engine for Angular2 components.
 ### Installation
 First, make sure you include phaser in your node_modules.  This will need to be linked to the phaser directive directly (example below).
 ```
-npm install phaser
+npm install phaser --save
+npm install ang2-phaser --save
 ```
 <br>
 Next, alter your systemjs.config.js to include the right pathing.<br>
@@ -28,6 +29,7 @@ Next, alter your systemjs.config.js to include the right pathing.<br>
 
 ```
 Then include the module in your scripts (including the functions and declarations).<br>
+*Note that you do not have to include the main Phaser file; the directive will do it for you.  
 ```
 
 import {Component} from '@angular/core';
@@ -42,7 +44,7 @@ declare var __phaser:any;
    template: `
      <center>
        <h1>Angular2 - Phaser Demo</h1>
-       <phaser (phaser)="phaserLink1($event)" [settings]="{file:'node_modules/phaser/build/phaser.min.js'}"></phaser>
+       <phaser (phaser)="phaserLink1($event)" ></phaser>
      </center>
    `
 })
@@ -54,7 +56,7 @@ export class AppComponent {
 
       var js = document.createElement("script");
           js.type = "text/javascript";
-          js.src = '../../../node_modules/ang2-phaser/game/phaser1_demo.js';
+          js.src = '../../../node_modules/ang2-phaser/game_demos/phaser1_demo.js';
           document.body.appendChild(js);
           js.onload = function(){
              __phaser.game.init(phaser.container, this);
@@ -181,8 +183,18 @@ __phaser = {
 //--------------
 ```
 
+
+### Parameters
+```
+// if you want to use an alternate version of Phaser (instead of the most up to date version, which is 2.6.1, then you
+// can just just pass the file location in the setting -> file
+
+// EXAMPLE:
+<phaser (phaser)="phaserLink1($event)" [settings]="{file:'node_modules/phaser/build/phaser.min.js'}"></phaser>
+```
+
 ### Version
-1.0.0
+1.0.1
 
 
 ### Live Demo 
@@ -191,10 +203,6 @@ Coming soon!
 ### Dependencies
 - Phaser
 
-### NPM / Bower
-```
-npm install ang2-phaser --save
-```
 
 
 
