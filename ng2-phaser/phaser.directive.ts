@@ -16,7 +16,7 @@ export class ng2PhaserComponent {
 
   @Output() phaser = new EventEmitter();
   @Input() settings:any;
-  @Input() layout:any;
+
 
    //--------------
    constructor(private el: ElementRef) {
@@ -29,6 +29,13 @@ export class ng2PhaserComponent {
     var t = this;
     var alreadyLoaded = false;
     var allScripts = document.getElementsByTagName("script");
+
+    if(t.settings == undefined){
+      t.settings = {
+        file: 'node_modules/phaser/build/phaser.min.js'
+      }
+    }
+
     for(var i = 0; i < allScripts.length; i++){
       var str = allScripts[i].src;
       if (str.indexOf(t.settings.file) >= 0){

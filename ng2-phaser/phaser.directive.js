@@ -25,6 +25,11 @@ var ng2PhaserComponent = (function () {
         var t = this;
         var alreadyLoaded = false;
         var allScripts = document.getElementsByTagName("script");
+        if (t.settings == undefined) {
+            t.settings = {
+                file: 'node_modules/phaser/build/phaser.min.js'
+            };
+        }
         for (var i = 0; i < allScripts.length; i++) {
             var str = allScripts[i].src;
             if (str.indexOf(t.settings.file) >= 0) {
@@ -74,20 +79,15 @@ var ng2PhaserComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', Object)
     ], ng2PhaserComponent.prototype, "settings", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], ng2PhaserComponent.prototype, "layout", void 0);
     ng2PhaserComponent = __decorate([
         core_1.Component({
             selector: 'phaser',
             directives: [common_1.CORE_DIRECTIVES],
             template: ""
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [core_1.ElementRef])
     ], ng2PhaserComponent);
     return ng2PhaserComponent;
-    var _a;
 }());
 exports.ng2PhaserComponent = ng2PhaserComponent;
 //------------------------------------
