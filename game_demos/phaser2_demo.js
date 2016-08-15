@@ -24,7 +24,7 @@ __phaser = {
                 game.stage.backgroundColor = '#95a5a6';
 
                 // load images/sounds/scripts
-                game.load.image('phaser_logo', 'game/phaser_logo.png')
+                game.load.image('phaser_logo', '../../../node_modules/ang2-phaser/game_demos/phaser_logo.png')
 
                 // preloader events
                 game.load.onLoadStart.add(loadStart, this);
