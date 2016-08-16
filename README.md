@@ -211,16 +211,6 @@ __phaser = {
 <phaser (phaser)="phaserLink1($event)" [settings]="{file:'node_modules/phaser/build/phaser.min.js'}"></phaser>
 ```
 
-### Version
-1.0.1
-
-
-### Live Demo 
-Coming soon!
-
-### Dependencies
-- Phaser
-
 
 
 
