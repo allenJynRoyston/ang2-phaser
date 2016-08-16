@@ -10,7 +10,7 @@ An easy way to implement the Phaser game engine for Angular2 components.
 But wait, I don't make games - I'm a web developer... can I still use this?  [HELLS YEAH YOU CAN](http://allenroyston-2016.herokuapp.com/ "hell yeah you can").  Make your regular sites RAD AS FUUUUUU*K.
 
 ### Installation
-First, make sure you include phaser in your node_modules.  This will need to be linked to the phaser directive directly (example below).
+First, install Phaser source (phaser) and the Phaser directive (ang2-phaser).
 ```
 npm install phaser --save
 npm install ang2-phaser --save
@@ -35,7 +35,7 @@ Next, alter your systemjs.config.js to include the right pathing.<br>
 
 ```
 Then include the module in your scripts (including the functions and declarations).<br>
-*Note that you do not have to include the main Phaser file; the directive will do it for you.  
+<strong>*Two game demo files are included.  When building out your own, use them as templates.  You can place those files anywhere - just make sure you make the appropriate changes in the phaserLink code snippet.</strong>
 ```
 
 import {Component} from '@angular/core';
@@ -62,8 +62,8 @@ export class AppComponent {
 
       var js = document.createElement("script");
           js.type = "text/javascript";
-          // Check out the demo source file then use it to make your own - make sure you path it out correctly.
           js.src = '../../../node_modules/ang2-phaser/game_demos/phaser1_demo.js';
+          // js.src = '../../../node_modules/ang2-phaser/game_demos/phaser2_demo.js';  // alternative 
           document.body.appendChild(js);
           js.onload = function(){
              __phaser.game.init(phaser.container, this);
