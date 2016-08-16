@@ -36,6 +36,8 @@ Next, alter your systemjs.config.js to include the right pathing.<br>
 ```
 Then include the module in your scripts (including the functions and declarations).<br>
 <strong>*Two game demo files are included.  When building out your own, use them as templates.  You can place those files anywhere - just make sure you make the appropriate changes in the phaserLink code snippet.</strong>
+<br>
+<strong>** Width/height and resolution of game are controlled in the game file.  Check out the demo source code.</strong>
 ```
 
 import {Component} from '@angular/core';
@@ -63,7 +65,7 @@ export class AppComponent {
       var js = document.createElement("script");
           js.type = "text/javascript";
           js.src = '../../../node_modules/ang2-phaser/game_demos/phaser1_demo.js';
-          // js.src = '../../../node_modules/ang2-phaser/game_demos/phaser2_demo.js';  // alternative 
+          // js.src = '<pathTo>/myGame.js';  //  swap out this code when you build your own game
           document.body.appendChild(js);
           js.onload = function(){
              __phaser.game.init(phaser.container, this);
