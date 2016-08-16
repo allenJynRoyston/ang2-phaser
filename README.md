@@ -6,7 +6,7 @@ An easy way to implement the Phaser game engine for Angular2 components.
 ### Demo!
 [Check it out!](https://phaser-angular2-demo.herokuapp.com/ "check it out")
 <br>
-But wait, I don't make games... can I still use this?  [HELLS YEAH YOU CAN](http://allenroyston-2016.herokuapp.com/ "hell yeah you can").
+But wait, I don't make games... can I still use this?  [HELLS YEAH YOU CAN](http://allenroyston-2016.herokuapp.com/ "hell yeah you can").  Make your boring sites RAD AS FUUUUUU*K.
 
 ### Installation
 First, make sure you include phaser in your node_modules.  This will need to be linked to the phaser directive directly (example below).
