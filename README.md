@@ -71,6 +71,12 @@ export class AppComponent {
       });
    }
    //---------------
+   
+   //---------------
+   ngOnDestroy() {
+      this.destroyGame();
+   }
+   //---------------
 
 
 }
