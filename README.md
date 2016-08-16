@@ -9,6 +9,9 @@ An easy way to implement the Phaser game engine for Angular2 components.
 <br>
 But wait, I don't make games - I'm a web developer... can I still use this?  [HELLS YEAH YOU CAN](http://allenroyston-2016.herokuapp.com/ "hell yeah you can").  Make your regular sites RAD AS FUUUUUU*K.
 
+### Seed Project!
+Want to try it out right MEOW?  Look no further - clone this [seed project](https://github.com/allenRoyston/phaser-angular2-demo "seed project").
+
 ### Installation
 First, install Phaser source (phaser) and the Phaser directive (ang2-phaser).
 ```
