@@ -4,13 +4,12 @@
 An easy way to implement the Phaser game engine for Angular2 components.
 
 ### Demo!
-[Basic Demo](https://phaser-angular2-demo.herokuapp.com/ "Basic Demo")
+- [Basic Demo](https://phaser-angular2-demo.herokuapp.com/ "Basic Demo")
 <br><br>
-[Angular Attack 2016 Submission](https://totallynotarobot.2016.angularattack.io/ "Angular Attack 2016 Submission")
+- [Angular Attack 2016 Submission](https://totallynotarobot.2016.angularattack.io/ "Angular Attack 2016 Submission")
 <br><br>
 But wait, I don't make games - I'm a web developer... can I still use this?  
-<br>
-[HELLS YEAH YOU CAN](http://allenroyston-2016.herokuapp.com/ "hell yeah you can").  Make your regular sites RAD AS FUUUUUU*K.
+- [HELLS YEAH YOU CAN](http://allenroyston-2016.herokuapp.com/ "hell yeah you can").  Make your regular sites RAD AS FUUUUUU*K.
 
 ### Seed Project!
 Want to try it out right MEOW?  Look no further - clone this [seed project](https://github.com/allenRoyston/phaser-angular2-demo "seed project").
