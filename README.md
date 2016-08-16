@@ -62,6 +62,7 @@ export class AppComponent {
 
       var js = document.createElement("script");
           js.type = "text/javascript";
+          // Check out the demo source file then use it to make your own - make sure you path it out correctly.
           js.src = '../../../node_modules/ang2-phaser/game_demos/phaser1_demo.js';
           document.body.appendChild(js);
           js.onload = function(){
