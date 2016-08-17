@@ -1,6 +1,6 @@
 {
   "name": "ang2-phaser",
-  "version": "1.1.3",
+  "version": "1.1.5",
   "description": "A Phaser module built for Angular 2 components.",
   "main": "index.js",
   "scripts": {

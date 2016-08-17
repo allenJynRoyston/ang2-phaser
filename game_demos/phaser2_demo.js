@@ -9,7 +9,7 @@ __phaser = {
       //-------------------
       init(canvasEle, appComponent){
               // create game object
-              var game = new Phaser.Game(800, 500, Phaser.AUTO, canvasEle, { preload: preload, update: update });
+              var game = new Phaser.Game(1200, 800, Phaser.AUTO, canvasEle, { preload: preload, create: create, update: update });
               var gameState = "preload"
 
               // assign it
@@ -24,7 +24,7 @@ __phaser = {
                 game.stage.backgroundColor = '#95a5a6';
 
                 // load images/sounds/scripts
-                game.load.image('phaser_logo', '../../../node_modules/ang2-phaser/game_demos/phaser_logo.png')
+                game.load.image('pic', '../../../node_modules/ang2-phaser/game_demos/phaser_logo.png');
 
                 // preloader events
                 game.load.onLoadStart.add(loadStart, this);
@@ -34,36 +34,21 @@ __phaser = {
             }
             //-----------------------
 
+            //-----------------------  CREATE
+            function create() {
+
+
+            }
+            //-----------------------
+
 
             //-----------------------
             function loadStart() {
-
-                var fragmentSrc = [
-                    "precision mediump float;",
-                    "uniform vec2      resolution;",
-                    "uniform float     time;",
-                    "#define PI 90",
-                    "void main( void ) {",
-                    "vec2 p = ( gl_FragCoord.xy / resolution.xy ) - 0.5;",
-                    "float sx = 0.3 * (p.x + 0.8) * sin( 900.0 * p.x - 1. * pow(time, 0.55)*5.);",
-                    "float dy = 4./ ( 500.0 * abs(p.y - sx));",
-                    "dy += 1./ (25. * length(p - vec2(p.x, 0.)));",
-                    "gl_FragColor = vec4( (p.x + 0.1) * dy, 0.3 * dy, dy, 1.1 );",
-                "}"];
-                preload_filter = new Phaser.Filter(game, null, fragmentSrc);
-                preload_filter.setResolution(800, 500);
-                preload_sprite = game.add.sprite();
-                preload_sprite.width = 800;
-                preload_sprite.height = 500;
-                preload_sprite.filters = [ preload_filter ];
-
-
                 // text
-                loadingtext = game.add.text(game.world.centerX, game.world.centerY/2, "", {fill: "#fff"});
+                loadingtext = game.add.text(game.world.centerX, game.world.centerY/2, "");
                 loadingtext.anchor.set(0.5);
-                loadingPercentage = game.add.text(game.world.centerX, game.world.centerY - 100, "", {fill: "#fff"});
-                loadingPercentage.anchor.set(0.2);
-
+                loadingPercentage = game.add.text(game.world.centerX, game.world.centerY, "");
+                loadingPercentage.anchor.set(0.5);
             }
             //-----------------------
 
@@ -76,7 +61,7 @@ __phaser = {
 
             //-----------------------
             function preloaderUpdate(){
-                preload_filter.update();
+                // upadate cycle for anything in preload state
             }
             //-----------------------
 
@@ -86,9 +71,7 @@ __phaser = {
                 loadingPercentage.setText("100%")
 
                 // add slight delay before starting game
-                game.time.events.add(Phaser.Timer.SECOND * 3, function(){
-                    preload_filter.destroy();
-                    preload_sprite.destroy();
+                game.time.events.add(Phaser.Timer.SECOND * 1, function(){
                     loadingtext.destroy();
                     loadingPercentage.destroy();
                     startGame()
@@ -101,14 +84,36 @@ __phaser = {
             function startGame(){
                 gameState = "gameplay"
 
-                loadingtext = game.add.text(game.world.centerX, game.world.centerY/2, "Game Started", {fill: "#fff"});
-                loadingtext.anchor.set(0.5);
+                game.stage.backgroundColor = '#2d2d2d';
+
+              	bmd = game.make.bitmapData();
+              	bmd.load('pic').cls();
+
+              	bmd.addToWorld(game.world.centerX, game.world.centerY, 0.5, 0.5, 2, 2);
+
+              	game.stage.smoothed = false;
+
+              	area = new Phaser.Rectangle(0, bmd.height, bmd.width, 1);
+
+              	dropTime = game.time.now + 250;
+
+
             }
             //-----------------------
 
             //-----------------------
             function gameplayUpdate(){
                 // update filter
+                if (area.y > 0 && game.time.now > dropTime)
+              	{
+              		for (var y = 0; y < area.y; y++)
+              		{
+              			bmd.copyRect('pic', area, 0, y);
+              		}
+
+              		area.y--;
+              		dropTime = game.time.now + 25;
+              	}
             }
             //-----------------------
 
