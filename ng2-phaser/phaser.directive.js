@@ -30,41 +30,13 @@ var ng2PhaserComponent = (function () {
                 file: 'node_modules/phaser/build/phaser.min.js'
             };
         }
-        for (var i = 0; i < allScripts.length; i++) {
-            var str = allScripts[i].src;
-            if (str.indexOf(t.settings.file) >= 0) {
-                alreadyLoaded = true;
-            }
-        }
-        if (alreadyLoaded) {
-            var scriptLoadedTest = function () {
-                setTimeout(function () {
-                    try {
-                        var test = new Phaser.Game();
-                        clearInterval(this);
-                    }
-                    catch (err) { }
-                    finally {
-                        if (test != undefined) {
-                            t.initPhaser();
-                        }
-                        else {
-                            scriptLoadedTest();
-                        }
-                    }
-                }, 1);
-            };
-            var intv = scriptLoadedTest();
-        }
-        else {
-            var js = document.createElement("script");
-            js.type = "text/javascript";
-            js.src = t.settings.file;
-            document.body.appendChild(js);
-            js.onload = function () {
-                t.initPhaser();
-            };
-        }
+        var js = document.createElement("script");
+        js.type = "text/javascript";
+        js.src = t.settings.file;
+        document.body.appendChild(js);
+        js.onload = function () {
+            t.phaser.emit({ firstLoad: true, container: t.selfRef });
+        };
     };
     //--------------
     //--------------
